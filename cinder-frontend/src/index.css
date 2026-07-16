@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-charcoal text-gray-200 min-h-screen font-sans;
+  }
+}
+
+.text-flame-gradient {
+  @apply bg-flame-gradient bg-clip-text text-transparent;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--particle-opacity, 0.4);
+  }
+  90% {
+    opacity: var(--particle-opacity, 0.4);
+  }
+  100% {
+    transform: translateY(-100vh) scale(0) translateX(20px);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.6; }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* 
+  CRITICAL: prefers-reduced-motion override for all animations.
+  This disables not just the new embers/pulse, but all transforms/transitions
+  across the entire site instantly if the user requests reduced motion.
+*/
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.force-reduced-motion *, .force-reduced-motion *::before, .force-reduced-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+.interactive-card {
+  @apply transition-all duration-300 ease-out border border-white/5;
+}
+.interactive-card:hover {
+  @apply -translate-y-1 scale-[1.02] border-flame-gold/40 shadow-[0_0_15px_rgba(255,107,26,0.3)];
+}
