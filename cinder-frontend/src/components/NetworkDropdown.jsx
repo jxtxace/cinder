@@ -105,7 +105,7 @@ export default function NetworkDropdown() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-3 w-80 bg-charcoal-light border border-white/10 rounded-xl shadow-2xl z-50 overflow-hidden text-sm">
+        <div className="fixed inset-x-4 max-w-sm mx-auto top-24 max-h-[70vh] overflow-y-auto overflow-x-hidden md:absolute md:inset-x-auto md:right-0 md:top-auto md:mt-3 md:w-80 bg-charcoal-light border border-white/10 rounded-xl shadow-2xl z-50 text-sm">
           {/* Header */}
           <div className="flex justify-between items-center p-4 border-b border-white/5 bg-black/20">
             <h3 className="font-bold text-white flex items-center gap-2">
